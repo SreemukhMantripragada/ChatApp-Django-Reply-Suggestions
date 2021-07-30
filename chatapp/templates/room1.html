@@ -1,0 +1,104 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <title>ChatApp</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="shortcut icon" href="{% static 'ico.ico'%}">
+    </head>
+    <body>
+        <a href="/">
+            <!-- <img src="{% static 'icon.gif'%}" alt=""> -->
+            <h1 style="display: inline; float:left; margin-left: 0;"> &#8249; Home</h1>
+        </a>
+        <h1>{{room}} - Chatroom</h1>
+        <div class="scroll" id="display1">
+            <div id="display" class="bubble-dialog">
+                <script>
+                    var lastid=0;
+                    
+                    $("#display").empty();
+                    function call(value){
+                        $("#message").val(value);
+                    }
+                    $(document).ready(function(){
+                        setInterval(function(){
+                            $.ajax({
+                                type: 'GET',
+                                url : "/getMessages/{{room}}/{{username}}/"+lastid.toString(),
+                                success: function(response){
+                                    console.log(response);
+                                    for (var key in response.messages)
+                                    {   
+                                        $("#display1").animate({
+                                            scrollTop: $("#display1")[0].scrollHeight
+                                        }, 300);
+                                        var temp;
+                                        if(response.messages[key].user=="{{username}}"){
+                                            temp="<br><div class='bubble-right'><b>"+response.messages[key].user+"</b><br><p>"+response.messages[key].value+"</p></div><br>";
+                                        }
+                                        else{
+                                            temp="<br><div class='bubble-left'><b>"+response.messages[key].user+"</b><br><p>"+response.messages[key].value+"</p></div><br>";
+                                        }
+                                        $("#display").append(temp); 
+                                        lastid = response.messages[key].id;
+                                    }
+                                    var keys = Object.keys(response.predictions)
+                                    if(response.messages.length!=0){
+                                        $("#pred").empty();
+                                        for(var i =0;i<keys.length;i++){
+                                            console.log(response.predictions[i]);
+                                            var temp = `<input class="suggestion select" value='${response.predictions[i]}' onClick="call(this.value)"></input>`;
+                                            $("#pred").append(temp);
+                                        }
+                                    }
+                                },
+                                error: function(response){
+                                    alert('An error occured')
+                                }
+                            });
+                        },1000);
+                    })
+                </script>
+            </div>
+        </div>
+        
+        <div id="pred">
+        </div>
+
+        <div class="form">
+            <form id="post-form">
+                {% csrf_token %}
+                <input type="hidden" name="username" id="username" value="{{username}}"/>
+                <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+                <input class="formtext" type="text" name="message" id="message" width="100px" />
+                <input type="submit" value="&#187;">
+            </form>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(document).on('submit','#post-form',function(e){
+            e.preventDefault();
+            if($('#message').val()!=" "){
+                $.ajax({
+                type:'POST',
+                url:'/send',
+                data:{
+                    username:$('#username').val(),
+                    room_id:$('#room_id').val(),
+                    message:$('#message').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function(data){
+                    //  alert(data)
+                }
+                });
+                document.getElementById('message').value = ''
+            }
+        });
+    </script> 
+</html>

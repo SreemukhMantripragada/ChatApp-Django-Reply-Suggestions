@@ -1,0 +1,226 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+    background-color: #8FCB9B;
+}
+h1{
+	color: #304C89;
+    font-size: 2.5vw;
+    display: inline-block;
+    margin-left: 30%;
+}
+h2{
+	color: #304C89;
+    font-size: 5vw;
+}
+h3, label{
+    font-size: 3vw;
+    color: #304C89;
+}
+img{
+    max-width: 6%;
+    max-height: 5%;
+    display: inline-block;
+    border-radius: 50%;
+}
+.scroll{
+	background-color:#E8E5DA;
+	width: 100%;
+	height: 88%;
+	overflow: auto;
+	text-align:justify;
+}
+.bubble-dialog {
+    max-width: 95%;
+    white-space: pre-line;
+    line-height:0;
+    padding-left:2%;
+    /* max-width: 95%; */
+}
+.bubble-left,
+.bubble-right {
+    line-height: 100%;
+    display: inline-block;
+    position: relative;
+    padding: .25em .5em;
+    background: #D5FFF3;
+    border: #5B9279 solid 3px;
+    border-radius: 11px;
+    margin-bottom: 2em;
+    word-wrap: break-word;
+}
+.bubble-left {
+    margin-right:10%;
+}
+.bubble-right {
+    margin-left:10%
+}
+
+.bubble-left:after,
+.bubble-left:before,
+.bubble-right:after,
+.bubble-right:before {
+    content: "";
+    position: absolute;
+    top: 21px;
+    border-style: solid;
+    border-width: 13px 17px 13px 0;
+    border-color: transparent #D5FFF3;
+    display: block;
+    width: 0;
+}
+
+.bubble-left:after,
+.bubble-left:before {
+    border-width: 13px 17px 13px 0;
+    border-color: transparent #D5FFF3;
+}
+
+.bubble-right:after,
+.bubble-right:before {
+    border-width: 13px 0 13px 17px;
+    border-color: transparent #D5FFF3;
+}
+
+.bubble-left:after {
+    left: -16px;
+    border-color: transparent #D5FFF3;
+    z-index: 1;
+}
+
+.bubble-left:before {
+    left: -19px;
+    border-color: transparent #5B9279;
+    z-index: 0;
+}
+
+.bubble-right:after {
+    right:-16px;
+    border-color: transparent #D5FFF3;
+    z-index: 1;
+}
+
+.bubble-right:before {
+    right:-19px;
+    border-color: transparent #5B9279;
+    z-index: 0;
+}
+.bubble-dialog {
+    white-space: pre-line;
+    line-height:0;
+}
+
+.bubble-left,
+.bubble-right {
+    line-height: 100%;
+    display: block;
+    position: relative;
+    padding: .25em .5em;
+    background: #D5FFF3;
+    border: #5B9279 solid 3px;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+    margin-bottom: 2em;
+    clear: both;
+    max-width:50%;
+}
+p{
+    margin-bottom: 0;
+}
+
+.bubble-left {
+    float: left;
+    margin-right:10%;
+}
+.bubble-right {
+    float:right;
+    margin-left:10%
+}
+
+.bubble-left:after,
+.bubble-left:before,
+.bubble-right:after,
+.bubble-right:before {
+    content: "";
+    position: absolute;
+    top: 21px;
+    border-style: solid;
+    border-width: 13px 17px 13px 0;
+    border-color: transparent #D5FFF3;
+    display: block;
+    width: 0;
+}
+
+.bubble-left:after,
+.bubble-left:before {
+    border-width: 13px 17px 13px 0;
+    border-color: transparent #D5FFF3;
+}
+
+.bubble-right:after,
+.bubble-right:before {
+    border-width: 13px 0 13px 17px;
+    border-color: transparent #D5FFF3;
+}
+
+.bubble-left:after {
+    left: -16px;
+    border-color: transparent #D5FFF3;
+    z-index: 1;
+}
+
+.bubble-left:before {
+    left: -19px;
+    border-color: transparent #5B9279;
+    z-index: 0;
+}
+
+.bubble-right:after {
+    right:-16px;
+    border-color: transparent #D5FFF3;
+    z-index: 1;
+}
+
+.bubble-right:before {
+    right:-19px;
+    border-color: transparent #5B9279;
+    z-index: 0;
+}
+#pred {
+    width: 100%;
+}
+.suggestion{
+    width: 33.33%;
+    font-weight: bold;
+    text-align: center;
+}
+.select{
+    cursor: pointer;
+    caret-color: transparent;
+    font-size: 18px;
+}
+.formtext{
+    width: 93%;
+    height: 5%;
+    margin-left: 2%;
+}
+.container{
+    font-size: 30px;
+    padding:5%;
+    clear: both;
+    width: 50%;
+}
+.container > input{
+    padding-left: 5px;
+    width: 100%;
+    clear: both;
+}
+#search{
+    width: 15%;
+    height: 7%;
+}
