@@ -1,4 +1,5 @@
 # ChatApp-Django-Reply-Suggestions
+#### Hosted link for chat(without suggestions) - [https://chatapp-django-sreemukh.herokuapp.com/]
 (Check requirements.txt in each folder while cloning.)  
 ### Django Application
 Uses ***AJAX*** for requesting the messages and sending new messages.  
