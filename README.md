@@ -1,5 +1,5 @@
 # ChatApp-Django-Reply-Suggestions
-
+(Check requirements.txt in each folder while cloning.)  
 ### Django Application
 Uses ***AJAX*** for requesting the messages and sending new messages.  
 Uses ***PostgreSQL*** for the database.  
